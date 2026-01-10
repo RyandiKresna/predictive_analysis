@@ -96,29 +96,29 @@ Melalui analisis yang dilakukan dapat disimpulkan:
 ### **Tahapan**
 
 1. Feature Engineering
-  - Membuat pengelompokan data khususnya data numerik seperti `BMI`,`Age_Group`,`BMI_Category`, dan `Lifestyle_score`.
-  - - Alasan : memudahkan algoritma untuk melakukan pengelompokan data `Age_Group` yang terdiri dari 3 kelompok (Young, Adult, dan Middle_Aged) dan Kelompok `BMI_Category` yang terdiri 4 kelompok (Underweight, Normal, Overweight, dan Obese).
+    - Membuat pengelompokan data khususnya data numerik seperti `BMI`,`Age_Group`,`BMI_Category`, dan `Lifestyle_score`.
+    - Alasan : memudahkan algoritma untuk melakukan pengelompokan data `Age_Group` yang terdiri dari 3 kelompok (Young, Adult, dan Middle_Aged) dan Kelompok `BMI_Category` yang terdiri 4 kelompok (Underweight, Normal, Overweight, dan Obese).
 
 2. Encoding Categorical Feature
 
-  - Memberikan encoding pada data bersifat kategori (dtype = Object) dengan menggunakan teknik  One-Hot Encoding dan Label Encoding.
-  - Alasan : Pada dasarnya, metode pada Machine Learning tidak memahami informasi yang bersifat `Object` yang mengharuskan mengubah nilai tersebut dalam `float` atau `Int`
+    - Memberikan encoding pada data bersifat kategori (dtype = Object) dengan menggunakan teknik  One-Hot Encoding dan Label Encoding.
+    - Alasan : Pada dasarnya, metode pada Machine Learning tidak memahami informasi yang bersifat `Object` yang mengharuskan mengubah nilai tersebut dalam `float` atau `Int`
 
 3. Feature Scaling
-  - Menggunakan metode numerik normalisasi `StandarScaler` yang membuat nilai feature memiliki nilai rerata nol dan standar deviasi satu.
-  - Alasan : Normalisasi data memastikan skala data besar tidak mendominasi pada tahapan pelatihan data, sehingga menghindari performa algortima underfitting.   
+    - Menggunakan metode numerik normalisasi `StandarScaler` yang membuat nilai feature memiliki nilai rerata nol dan standar deviasi satu.
+    - Alasan : Normalisasi data memastikan skala data besar tidak mendominasi pada tahapan pelatihan data, sehingga menghindari performa algortima underfitting.   
 
 4. Splitting Data
-  - Data dibagi menjadi 3 set, yaitu training, valid, dan test. Dengan proporsi data 75%, 15%, dan 15% dengan total sample 1478 sample training, 316 sample validation, dan 317 sample testing.
+    - Data dibagi menjadi 3 set, yaitu training, valid, dan test. Dengan proporsi data 75%, 15%, dan 15% dengan total sample 1478 sample training, 316 sample validation, dan 317 sample testing.
 
 5. Imbalance Handling
-  - Dikarenakan jumlah sample label yang tidak seimbang, data tiap-tiap label dilakukan penyeimbangan sample menggunakan metode `Smote` yang sebelumnya sumlah sampel sebanyak 1478, menjadi 1722 sampel data.
+    - Dikarenakan jumlah sample label yang tidak seimbang, data tiap-tiap label dilakukan penyeimbangan sample menggunakan metode `Smote` yang sebelumnya sumlah sampel sebanyak 1478, menjadi 1722 sampel data.
 
 6. Converting Numpy array to Tesorflow Tensor
-  - Menerapkan integrasi ekosistem tensorflow yang memerlukan input objek `tensor` 
+    - Menerapkan integrasi ekosistem tensorflow yang memerlukan input objek `tensor` 
 
 7. Creating Custom Tensorflow Dataset
-  - Menangani data yang tidak dapat diproses dengan mudah menggunakan framework Tensorflow.
+    - Menangani data yang tidak dapat diproses dengan mudah menggunakan framework Tensorflow.
 
 ## Modeling
 Pada tahapan modelling, saya menggunakan algoritma XGBoost, Logistic regression, dan Multi Layer Perceptron (DL).
@@ -132,11 +132,11 @@ Pada tahapan modelling, saya menggunakan algoritma XGBoost, Logistic regression,
 ## Evaluation
 
 ### Metrik Evaluasi
-  - Accuracy : Mengukur seberapa sering model membuat prediksi yang benar secara keseluruhan.
-  - Precission : Dari semua data yang diprediksi positif oleh model, berapa banyak yang benar-benar positif ?
-  - Recall : Dari semua data yang sebenarnya positif, berapa banyak yang berhasil dikenali oleh algortima ?
-  - F1-Score : Rata-rata harmonik (harmonic mean) dari Precision dan Recall.
-  - ROC AUC : Kurva ROC adalah plot probabilitas yang menggambarkan kinerja model klasifikasi pada berbagai threshold.
+    - Accuracy : Mengukur seberapa sering model membuat prediksi yang benar secara keseluruhan.
+    - Precission : Dari semua data yang diprediksi positif oleh model, berapa banyak yang benar-benar positif ?
+    - Recall : Dari semua data yang sebenarnya positif, berapa banyak yang berhasil dikenali oleh algortima ?
+    - F1-Score : Rata-rata harmonik (harmonic mean) dari Precision dan Recall.
+    - ROC AUC : Kurva ROC adalah plot probabilitas yang menggambarkan kinerja model klasifikasi pada berbagai threshold.
 
 ### Hasil Penelitian
 Hasil ini menggunakan set data test sebagai pengujian performa algoritma yang digunakan.
