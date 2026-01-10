@@ -34,13 +34,25 @@ Melakukan perbandingan antar model yang digunakan dengan mentargetkan tingkat **
 
 
 ## Data Understanding
-Melalui penelitian ini, dataset yang digunakan adalah [Obesity Prediction Dataset](https://www.kaggle.com/datasets/ruchikakumbhar/obesity-prediction). Data tersebut berisi 17 atribut dan 2111 catatan, di mana setiap catatan dilabeli dengan variabel kelas NObesity (Tingkat Obesitas), yang memungkinkan klasifikasi data berdasarkan nilai-nilai berat badan seperti: Normal Weight, Overweight Level I, Overweight Level II, Obesity Type I, Obesity Type II and Obesity Type III.
+
+### Informasi Data
+Melalui penelitian ini, dataset yang digunakan adalah [Obesity Prediction Dataset](https://www.kaggle.com/datasets/ruchikakumbhar/obesity-prediction). Data ini mencakup detail-detail berikut:
+
+1. **Jumlah Data**: Dataset terdiri dari 2111 sampel dan 17 fitur.
+2. **Kondisi Data**: Data terdapat beberapa sampel yang terduplikat. 
+
+### Penjelasan Fitur Data
+Data-data ini dikelompokkan berdasarkan karakteristik fitur dataset.
+
+1. **Sektor Fisik & Biologis** : Terdiri dari `age`, `weight`, `height`, dan `family_history_with_overweight` 
+2. **Sektor Kebiasaan Makan** : Terdiri dari `FAVC`,`FCVC`,`NCP`,`CAEC`,`CH2O`, dan`CALC`
+3. **Sektor Gaya Hidup & Aktivitas** : Terdiri dari `SMOKE`,`SCC`,`FAF`,`TUE`,`MTRANS`
 
 ### Variabel-variabel data obesitas dapat dilihat sebagai berikut:
-- Usia : Usia calon penderita
-- Tinggi Badan : Tinggi Badan calon penderita
-- Berat Badan : Berat Badan calon penderita
-- Riwayat Keluarga : Apakah ada anggota keluarga yang pernah menderita atau sedang menderita kelebihan berat badan?
+- Age : Usia calon penderita
+- height : Tinggi Badan calon penderita
+- weight : Berat Badan calon penderita
+- family_history_with_overweight : Apakah ada anggota keluarga yang pernah menderita atau sedang menderita kelebihan berat badan?
 - FAVC : Apakah Anda sering mengonsumsi makanan berkalori tinggi?
 - FCVC : Apakah Anda biasanya mengonsumsi sayuran dalam makanan Anda?
 - NCP : Berapa banyak makanan utama yang Anda konsumsi setiap hari?
@@ -52,15 +64,15 @@ Melalui penelitian ini, dataset yang digunakan adalah [Obesity Prediction Datase
 - TUE : Berapa lama waktu yang Anda habiskan untuk menggunakan perangkat teknologi seperti telepon seluler, video game, televisi, komputer, dan lainnya?
 - CALC : Seberapa sering Anda minum alkohol?
 - MTRANS : Transportasi apa yang biasanya Anda gunakan?
-- Tingkat Obesitas (Kolom Target) : Tingkat obesitas
+- NObeyesdad (Kolom Target) : Tingkat obesitas
 
 ## Exploratory Data Analysis
 
 ### **Korelasi antar data**
 
-![Korelasi feature](./Assets/korelasi_feature.png)
+![Korelasi feature](.Assets/korelasi_feature.png "Optional title on hover")
 
-![Korelasi data](./Assets/korelasi_data.png)
+![Korelasi data](.Assets/korelasi_data.png "Optional title on hover")
 
 
 - **Korelasi Heatmap** :Melalui korelasi antar data yang dilakukan. Pada data numerical, `Weight` dan `Height` memiliki hubungan antar data yang teringgi. Kemudian korelasi pada data categorical `Gender` dengan `NObeyesdad` dan `family_history_with_overweight` dengan `NObeyesdad`. amun, setelah melakukan penggalian data (data mini) lebih mendalam terdapat korelasi data antar numerical-categorical. Data meliputi `Weight`-`CAEC`, dan `Weight`-`NObeyesdad`yang memiliki hubungan kuat antar feature yang ada.
@@ -68,9 +80,9 @@ Melalui penelitian ini, dataset yang digunakan adalah [Obesity Prediction Datase
 
 ### **Analisis Feature dan Target**
 
-![caecNtarget](./Assets/caec_vs_label.png)
+![caecNtarget](.Assets/caec_vs_label.png "Optional title on hover")
 
-![familyNtarget](./Assets/family_overweight_vs_label.png)
+![familyNtarget](.Assets/family_overweight_vs_label.png "Optional title on hover")
 
 - **Distribusi antar data** : Jika diperhatikan lebih lanjut, fitur data seperti `CAEC`, `family_history_with_overweight`, dan `Weight` memiliki hubungan yang kuat anatara data yang ada pada fitur target/label `NObeyesdad`. Jika diperhatikan, bobot `weight` ini dipengaruh oleh `CAEC`dimamna calon penderita diketahui mengkonsumsi makanan pada malam hari. Selain itu juga, dipengaruhi oleh `family_history_with_overweight` dimana penderita memiliki histori keluarga yang obesitas. 
 
@@ -128,22 +140,23 @@ Pada tahapan modelling, saya menggunakan algoritma XGBoost, Logistic regression,
 - ROC AUC : Kurva ROC adalah plot probabilitas yang menggambarkan kinerja model klasifikasi pada berbagai threshold.
 
 ### Hasil Penelitian
+Hasil ini menggunakan set data test sebagai pengujian performa algoritma yang digunakan.
 
 **XGboost**
 
-- Accuracy:  0.9842
-- Precision: 0.9842
-- Recall:    0.9842
-- F1-Score:  0.9841
-- ROC-AUC:   0.9997
+- Accuracy : 0.9779
+- Precission : 0.9781
+- Recall : 0.9779
+- F1-Score : 0.9778
+- ROC AUC : 0.9982
 
 **Regresi Linear**
 
-- Accuracy:  0.9652
-- Precision: 0.9662
-- Recall:    0.9652
-- F1-Score:  0.9650
-- ROC-AUC:   0.9961
+- Accuracy : 0.9653
+- Precission : 0.9653
+- Recall : 0.9653
+- F1-Score : 0.9650
+- ROC AUC : 0.9949
 
 **Multi Layer Perceptron**
 
@@ -196,13 +209,11 @@ $$
 5. ROC AUC
 Kurva ini memplot dua parameter:
 - True Positive Rate (TPR) alias Recall:
-
 $$
 \text{TPR} = \frac{TP}{TP + FN}
 $$
 
 - False Positive Rate (FPR):
-
 $$
 \text{FPR} = \frac{FP}{FP + TN}
 $$
@@ -212,12 +223,13 @@ $$
 
 ### Performa Model
 
-![plot_perform](/.Assets/plot_acc-model.png)
+![plot_perform](.Assets/plot_acc-model.png "Optional title on hover")
 
-![result_conMat](./Assets/plot_confusion-matriks.png)
+![result_conMat](.Assets/plot_confusion-matriks.png "Optional title on hover")
+
 
 ### Model yang direkomendasikan
-![best_model](./Assets/plot_CM-xgboost.png)
+![best_model](.Assets/plot_CM-xgboost.png "Optional title on hover")
 
 ## Evaluasi Pengaruh Model Terhadap Business Understanding
 
