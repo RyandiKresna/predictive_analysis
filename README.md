@@ -211,13 +211,12 @@ $$
 
 ### Performa Model
 
-![plot_perform](.Assets/plot_acc-model.png "Optional title on hover")
+![plot_perform](/.Assets/plot_acc-model.png)
 
-![result_conMat](.Assets/plot_confusion-matriks.png "Optional title on hover")
-
+![result_conMat](./Assets/plot_confusion-matriks.png)
 
 ### Model yang direkomendasikan
-![best_model](.Assets/plot_CM-xgboost.png "Optional title on hover")
+![best_model](./Assets/plot_CM-xgboost.png)
 
 ## Evaluasi Pengaruh Model Terhadap Business Understanding
 
