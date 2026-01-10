@@ -58,9 +58,9 @@ Melalui penelitian ini, dataset yang digunakan adalah [Obesity Prediction Datase
 
 ### **Korelasi antar data**
 
-![Korelasi feature](.Assets/korelasi_feature.png)
+![Korelasi feature](./Assets/korelasi_feature.png)
 
-![Korelasi data](.Assets/korelasi_data.png)
+![Korelasi data](./Assets/korelasi_data.png)
 
 
 - **Korelasi Heatmap** :Melalui korelasi antar data yang dilakukan. Pada data numerical, `Weight` dan `Height` memiliki hubungan antar data yang teringgi. Kemudian korelasi pada data categorical `Gender` dengan `NObeyesdad` dan `family_history_with_overweight` dengan `NObeyesdad`. amun, setelah melakukan penggalian data (data mini) lebih mendalam terdapat korelasi data antar numerical-categorical. Data meliputi `Weight`-`CAEC`, dan `Weight`-`NObeyesdad`yang memiliki hubungan kuat antar feature yang ada.
@@ -68,9 +68,9 @@ Melalui penelitian ini, dataset yang digunakan adalah [Obesity Prediction Datase
 
 ### **Analisis Feature dan Target**
 
-![caecNtarget](.Assets/caec_vs_label.png "Optional title on hover")
+![caecNtarget](./Assets/caec_vs_label.png)
 
-![familyNtarget](.Assets/family_overweight_vs_label.png "Optional title on hover")
+![familyNtarget](./Assets/family_overweight_vs_label.png)
 
 - **Distribusi antar data** : Jika diperhatikan lebih lanjut, fitur data seperti `CAEC`, `family_history_with_overweight`, dan `Weight` memiliki hubungan yang kuat anatara data yang ada pada fitur target/label `NObeyesdad`. Jika diperhatikan, bobot `weight` ini dipengaruh oleh `CAEC`dimamna calon penderita diketahui mengkonsumsi makanan pada malam hari. Selain itu juga, dipengaruhi oleh `family_history_with_overweight` dimana penderita memiliki histori keluarga yang obesitas. 
 
