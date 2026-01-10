@@ -128,23 +128,22 @@ Pada tahapan modelling, saya menggunakan algoritma XGBoost, Logistic regression,
 - ROC AUC : Kurva ROC adalah plot probabilitas yang menggambarkan kinerja model klasifikasi pada berbagai threshold.
 
 ### Hasil Penelitian
-Hasil ini menggunakan set data test sebagai pengujian performa algoritma yang digunakan.
 
 **XGboost**
 
-- Accuracy : 0.9779
-- Precission : 0.9781
-- Recall : 0.9779
-- F1-Score : 0.9778
-- ROC AUC : 0.9982
+- Accuracy:  0.9842
+- Precision: 0.9842
+- Recall:    0.9842
+- F1-Score:  0.9841
+- ROC-AUC:   0.9997
 
 **Regresi Linear**
 
-- Accuracy : 0.9653
-- Precission : 0.9653
-- Recall : 0.9653
-- F1-Score : 0.9650
-- ROC AUC : 0.9949
+- Accuracy:  0.9652
+- Precision: 0.9662
+- Recall:    0.9652
+- F1-Score:  0.9650
+- ROC-AUC:   0.9961
 
 **Multi Layer Perceptron**
 
@@ -197,11 +196,13 @@ $$
 5. ROC AUC
 Kurva ini memplot dua parameter:
 - True Positive Rate (TPR) alias Recall:
+
 $$
 \text{TPR} = \frac{TP}{TP + FN}
 $$
 
 - False Positive Rate (FPR):
+
 $$
 \text{FPR} = \frac{FP}{FP + TN}
 $$
