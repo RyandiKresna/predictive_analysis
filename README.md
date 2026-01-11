@@ -126,8 +126,33 @@ Pada tahapan modelling, saya menggunakan algoritma XGBoost, Logistic regression,
 ### Modelling yang digunakan
 
 1. XGboost
+    - **Parameter Model**
+      - `n_estimators=200` : XGBoost bekerja secara bertahap. Pohon ke-2 memperbaiki kesalahan pohon ke-1, pohon ke-3 memperbaiki kesalahan pohon ke-2, dst. Anda meminta model membuat 200 pohon revisi.
+      - `max_depth=6` : engatur seberapa kompleks setiap pohon boleh tumbuh. Jika kedalaman 1, pohon hanya boleh bertanya 1 pertanyaan (Ya/Tidak). Jika 6, pohon boleh bertanya berantai hingga 6 tingkat.
+      - `learning_rate=0.05` : Mencegah model belajar terlalu cepat. Nilai kecil (seperti 0.05) membuat model belajar pelan-pelan tapi lebih teliti (robust)
+      - `subsample=0.8` : Setiap kali membuat pohon baru, model hanya menggunakan 80% baris data secara acak dari total data training. Mencegah model terlalu terpaku pada data spesifik (outlier)
+      - `colsample_bytree=0.8` : Setiap kali membuat pohon baru, model hanya menggunakan 80% kolom (fitur) secara acak. Sangat berguna jika Anda memiliki fitur yang sangat dominan. Ini memaksa pohon lain untuk belajar dari fitur-fitur yang kurang dominan.
+      - `reg_alpha=0.1` : Mendorong bobot fitur yang tidak penting menjadi benar-benar nol. Ini membantu seleksi fitur secara otomatis.
+      - `reg_lambda=1.0` : Mencegah bobot fitur menjadi terlalu besar secara drastis (membuat model lebih stabil/smooth). Ini adalah settingan default yang konservatif.
+      - `n_jobs=-1` : Menggunakan seluruh inti (core) CPU yang ada di komputer Anda untuk mempercepat proses training. Sangat berguna jika dataset Anda besar.
+   
+    - **Cara Kerja**
+
 2. Logistic Regression
+   - **Parameter Model**
+       -  `multi_calss='multinomial'`: mengidentifikasikan bahwa model melakukan tugasnya untuk mengklarifikasi multioutput
+       -  `solver='lbfgs'` : Algoritma matematik (optimizer) yang digunakan model untuk mencari bobot (weights) terbaik agar error-nya paling kecil.
+       -  `max_iter=1000` : Batas maksimal percobaan (iterasi) yang boleh dilakukan solver untuk menemukan solusi terbaik.
+       -  `random_state=42` : Mengunci unsur pengacakan.
+       -  `class_weight='balanced'` : Parameter ini memberi tahu model untuk memberi perhatian ekstra pada kelas minoritas (data yang jumlahnya sedikit).
+       -  `verbose=1` : Menampilkan log/progress bar saat training berlangsung, supaya Anda tahu bahwa komputer sedang bekerja dan tidak hang.
+       -  `n_jobs=-1` : Menggunakan seluruh inti (core) CPU yang ada di komputer Anda untuk mempercepat proses training. Sangat berguna jika dataset Anda besar.
+    - **Cara Kerja Model**
+
 3. Multi Layer Perceptron
+    - **Parameter Model**
+    - **Cara Kerja**
+   
 
 ## Evaluation
 
