@@ -137,6 +137,15 @@ Pada tahapan modelling, saya menggunakan algoritma XGBoost, Logistic regression,
       - `n_jobs=-1` : Menggunakan seluruh inti (core) CPU yang ada di komputer Anda untuk mempercepat proses training. Sangat berguna jika dataset Anda besar.
    
     - **Cara Kerja**
+      - XGBoost sangat cocok untuk dataset ini karena gaya hidup manusia itu kompleks dan saling berkaitan. Ia membuat aturan berantai ("If-Then-Else").
+      - Alih-alih memberi skor tunggal, XGBoost akan memecah populasi menjadi kelompok-kelompok spesifik (segmen):
+        - Pohon 1: "Apakah Family_History = Yes?"
+          - Jika Ya: Cek FAVC (Makan kalori tinggi). Jika Ya -> Risiko Tinggi.
+          - Jika Tidak: Cek NCP (Jumlah makan).
+        - Pohon 2: "Apakah MTRANS = Motorbike?" DAN "Apakah AGE < 25?"
+          - Model bisa menemukan pola unik: "Anak muda yang naik motor cenderung kurang gerak             dibanding anak muda yang jalan kaki, tapi tidak separah orang tua yang naik mobil."
+         
+    - Skenario model XGBoost menangkap nuansa: "Makan banyak itu buruk, KECUALI jika Anda juga berolahraga 4x seminggu." Logistic Regression sulit menangkap kata "KECUALI" ini tanpa bantuan rekayasa fitur manual.
 
 2. Logistic Regression
    - **Parameter Model**
@@ -147,7 +156,12 @@ Pada tahapan modelling, saya menggunakan algoritma XGBoost, Logistic regression,
        -  `class_weight='balanced'` : Parameter ini memberi tahu model untuk memberi perhatian ekstra pada kelas minoritas (data yang jumlahnya sedikit).
        -  `verbose=1` : Menampilkan log/progress bar saat training berlangsung, supaya Anda tahu bahwa komputer sedang bekerja dan tidak hang.
        -  `n_jobs=-1` : Menggunakan seluruh inti (core) CPU yang ada di komputer Anda untuk mempercepat proses training. Sangat berguna jika dataset Anda besar.
+   
     - **Cara Kerja Model**
+        - Logistic Regression adalah model matematika sederhana yang akan mencoba mencari koefisien (Skor) tetap untuk setiap fitur yang ada.
+        - JIKA, `TUE` (Waktu main gadget). Model akan menghitung: "Setiap kenaikan 1 jam main gadget, peluang obesitas naik sebesar X%"
+        - JIKA, `MTRANS` (Transportasi). Model mungkin memberi skor negatif (mengurangi risiko) untuk "Berjalan Kaki" dan skor positif (menambah risiko) untuk "Mobil". 
+      
 
 3. Multi Layer Perceptron
     - **Parameter Model**
@@ -172,7 +186,7 @@ Hasil ini menggunakan set data test sebagai pengujian performa algoritma yang di
   - Precission : 0.9781
   - Recall : 0.9779
   - F1-Score : 0.9778
-  - ROC AUC : 0.9982
+  - ROC AUC : 0.9997
 
 **Regresi Linear**
 
