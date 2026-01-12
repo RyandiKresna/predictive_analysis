@@ -165,8 +165,17 @@ Pada tahapan modelling, saya menggunakan algoritma XGBoost, Logistic regression,
 
 3. Multi Layer Perceptron
     - **Parameter Model**
+      - Model ini menggunakan pendekatan Sequential, yang berarti layer (lapisan) ditumpuk secara urut dari input ke output.
+      - `Input(shape=(input_dim,))` : gerbang masuk data. input_dim adalah jumlah fitur (kolom data) yang Anda miliki.
+      -  Layer Tersembunyi (Hidden Layers) 1, 2, dan 3: Model ini memiliki 3 blok layer utama yang polanya berulang: `Dense` -> `BatchNormalization` -> `Dropout`
+      -  `Dense(len(np.unique(y)), activation='softmax')` : layer terakhir untuk hasil         prediksi. Jumlah neuronnya dinamis (len(np.unique(y))), artinya menyesuaikan jumlah kelas target (label) Anda.
     - **Cara Kerja**
-   
+      - Input & Ekstraksi: Data masuk dan diproses oleh neuron (Dense). Fungsi ReLU menyaring informasi penting dan membuang nilai negatif
+      -  Stabilisasi & Proteksi: 
+        - BatchNormalization menyeimbangkan angka-angka output agar training stabil dan cepat.
+        - Dropout mematikan sebagian neuron secara acak untuk mencegah model "menghafal" data (mencegah overfitting).
+      - Prediksi (Output): Layer terakhir mengubah hasil olahan menjadi probabilitas (persentase) menggunakan Softmax untuk menentukan masuk ke kelas mana data tersebut.
+      -  Koreksi (Learning): Jika tebakan salah (error tinggi), algoritma Adam akan mundur ke belakang (Backpropagation) untuk merevisi bobot neuron agar tebakan selanjutnya lebih akurat.
 
 ## Evaluation
 
